@@ -52,21 +52,21 @@
                zoom: 10
             });
 
-            var canvas = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                   attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
-                   maxZoom: 10,
-                   minZoom: 10,
-                   id: 'mapbox.light',
-                   accessToken:'pk.eyJ1IjoiY3VyZW1hbmdvIiwiYSI6ImNpcTQ4cGFwbDAxbmVmd25vZGNiOTVzeGEifQ.GWZByYkIft6eMRha69C8nw'
-             }).addTo(map);
+            var dark = L.tileLayer('https://{s}.tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+                attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                minZoom: 10,
+                maxZoom: 10,
+                subdomains: 'abcd',
+                accessToken: 'Goq3ZdT8uZrVSQmAvZCVaAZSzxIXAtdAjYbSwmp37vRa8GXyHwsSFstEaWTexNrR'
+            }).addTo(map);
 
-             var imagery = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-               attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
-               maxZoom: 10,
-               minZoom: 10,
-               id: 'mapbox.satellite',
-               accessToken:'pk.eyJ1IjoiY3VyZW1hbmdvIiwiYSI6ImNpcTQ4cGFwbDAxbmVmd25vZGNiOTVzeGEifQ.GWZByYkIft6eMRha69C8nw'
-             });
+             var streets = L.tileLayer('https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+                attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                minZoom: 10,
+                maxZoom: 10,
+                subdomains: 'abcd',
+                accessToken: 'Goq3ZdT8uZrVSQmAvZCVaAZSzxIXAtdAjYbSwmp37vRa8GXyHwsSFstEaWTexNrR'
+            });
 
 
             function getColor(value) {
@@ -138,10 +138,10 @@
             legend.addTo(map);
             
             var basemaps = {
-                "Light Canvas": canvas,
-                "Satellite Imagery": imagery
-            };
-
+                "Dark Background": dark,
+                "Streets": streets
+            }
+            
             var overlaymaps = {
                 "London Boroughs": boroughs,
                 "Underground": trainline,
